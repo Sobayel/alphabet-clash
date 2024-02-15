@@ -11,6 +11,31 @@ function setBackgroundColorById(elementId){
     const element = document.getElementById(elementId);
     element.classList.add('bg-amber-500');
 }
+function removeBackgroundColorById(elementId){
+    const element = document.getElementById(elementId);
+    element.classList.remove('bg-amber-500');
+}
+
+ // update score
+// ..................if- else................................
+function getTextElementValueById(elementId){
+    const element = document.getElementById(elementId);
+    const elementValueText = element.innerText;
+    const value = parseInt(elementValueText);
+    return value;
+}
+function setTextElementValueById(elementId, value){
+    const element = document.getElementById(elementId);
+    element.innerText = value;
+}
+// remove selector alphabet highlight
+function getElementTextById(elementId){
+    const element = document.getElementById(elementId);
+    const text = element.innerText;
+    return text;
+}
+// ...........................................................
+
 
 function getRandomAlphabet(){
     //get or create an alphabet array
@@ -21,7 +46,6 @@ function getRandomAlphabet(){
     // get a random index between 0 - 25
     const randomNumber = Math.random() * 25;
     const index = Math.round(randomNumber);
-
 
     const alphabet = alphabets[index];
     // console.log(index, alphabet);

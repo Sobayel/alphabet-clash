@@ -79,12 +79,12 @@
                     <button class="btn bg-[#894189] rounded-full px-4 border-none text-white">
                         Life
                         <img src="./images/love.svg" alt="">
-                        <span>1</span>
+                        <span id="current-life">7</span>
                       </button>
                     <button class="btn bg-[#360490] rounded-full px-4 text-white border-none">
                         Score
                         <img src="./images/dolor.svg" alt="">
-                        <span>1</span>
+                        <span id="current-score">0</span>
                       </button>
                 </div>
                 <!-- life score end -->
@@ -93,13 +93,14 @@
         <!-- play ground end -->
 
         <!-- score start -->
-        <section class="score flex justify-center items-center min-h-screen hidden">
+        <section id="final-score" class="flex justify-center items-center min-h-screen hidden">
             <div class="text-white text-center space-y-6 bg-[#FFFFFF33] px-10 py-4 rounded-2xl">
+                <h3 class="text-3xl uppercase font-semibold">Game Over!</h3>
                 <h1 class="text-6xl">
                     <span class="font-extrabold">Score:</span>
-                    <span class="font-semibold">14</span>
+                    <span id="game-score" class="font-semibold">14</span>
                 </h1>
-                <button class="btn font-bold">Play Again</button>
+                <button onclick="play()" class="btn font-bold">Play Again</button>
                 <p class="text-xl">Practice will make you Pro</p>
             </div>
         </section>
