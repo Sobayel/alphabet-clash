@@ -13,6 +13,9 @@ const audio = new Audio();
 
 let isGamePLayOn = false;
 
+const artBoard = document.getElementById("art-board");
+const modalBox = document.getElementById("modal-box");
+
 function handlerKeyboardButtonPress(event){
     if (isGamePLayOn == false) return;
     const playerPressed = event.key;
@@ -63,10 +66,17 @@ function handlerKeyboardButtonPress(event){
         // wrong key audio add
         audio.src ="../audio/error.wav";
         audio.play();
+        artBoard.style.background = "linear-gradient(#FFFFFFB3 , red)";
 
         const currentLife = getTextElementValueById('current-life')
         const updatedLife = currentLife - 1;
+
+        const updatedLifePercentage = (updatedLife / 7)*100;
+        artBoard.style.background = `linear-gradient(#FFFFFFB3 ${updatedLifePercentage}%, red)`;
+
         setTextElementValueById('current-life', updatedLife);
+
+        
 
         if(updatedLife === 0){
             gameOver();
@@ -124,4 +134,16 @@ function gameOver(){
     const currentAlphabet = getElementTextById('current-alphabet');
     removeBackgroundColorById(currentAlphabet);
     isGamePLayOn = false;
+    artBoard.style.background = "linear-gradient(#FFFFFFB3 100%, red)";
 }
+
+function modalOpen(event){
+    if(event.clientY < 20){
+        modalBox.style.display = "flex";
+    }
+}
+
+function closeModal(){
+    modalBox.style.display = "none";
+}
+document.body.onmousemove = modalOpen;
