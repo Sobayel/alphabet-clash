@@ -9,8 +9,12 @@
 //     playgroundSection.classList.remove('hidden');
     // console.log(playgroundSection.classList);
 // }
+const audio = new Audio(); 
+
+let isGamePLayOn = false;
 
 function handlerKeyboardButtonPress(event){
+    if (isGamePLayOn == false) return;
     const playerPressed = event.key;
     console.log('player pressed',playerPressed);
 
@@ -28,6 +32,10 @@ function handlerKeyboardButtonPress(event){
     // key right or wrong pressed
     if(playerPressed === expectedAlphabet){
         console.log('you get a point');
+
+        // right key audio add
+        audio.src ="../audio/succses.wav";
+        audio.play();
 
         const currentScore = getTextElementValueById('current-score')
         const updatedScore = currentScore + 1;
@@ -51,6 +59,11 @@ function handlerKeyboardButtonPress(event){
     }
     else{
         console.log('you missed. you lost a life');
+
+        // wrong key audio add
+        audio.src ="../audio/error.wav";
+        audio.play();
+
         const currentLife = getTextElementValueById('current-life')
         const updatedLife = currentLife - 1;
         setTextElementValueById('current-life', updatedLife);
@@ -95,6 +108,7 @@ function play(){
     // reset score and life
     setTextElementValueById('current-life', 7);
     setTextElementValueById('current-score', 0);
+    isGamePLayOn = true;
     continueGame();
 }
 
@@ -109,4 +123,5 @@ function gameOver(){
     // clear the last selected alphabet highlight
     const currentAlphabet = getElementTextById('current-alphabet');
     removeBackgroundColorById(currentAlphabet);
+    isGamePLayOn = false;
 }
